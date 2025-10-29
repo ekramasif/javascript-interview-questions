@@ -1,0 +1,1332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Master JavaScript interviews with this comprehensive collection of 60 hand-picked coding problems, complete with solutions, time complexity analysis, and expert interview tips.">
+    <meta name="keywords" content="JavaScript interview questions, coding interview preparation, frontend developer interview, JavaScript algorithms, web developer coding test, technical interview questions">
+    <meta name="author" content="MiniMax Agent">
+    <title>JavaScript Interview Problems Cheat Sheet: 60 Essential Coding Questions for 2025</title>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #2563eb;
+            --secondary-color: #7c3aed;
+            --accent-color: #f59e0b;
+            --bg-color: #ffffff;
+            --text-color: #1f2937;
+            --code-bg: #f3f4f6;
+            --border-color: #e5e7eb;
+            --success-color: #10b981;
+            --tip-bg: #eff6ff;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 50px;
+            padding-bottom: 30px;
+            border-bottom: 3px solid var(--primary-color);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: var(--secondary-color);
+            font-weight: 600;
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            font-size: 2rem;
+            color: var(--secondary-color);
+            margin-top: 50px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            color: var(--text-color);
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+
+        h4 {
+            font-size: 1.2rem;
+            color: var(--secondary-color);
+            margin-top: 25px;
+            margin-bottom: 10px;
+        }
+
+        p {
+            margin-bottom: 15px;
+        }
+
+        ul, ol {
+            margin-left: 30px;
+            margin-bottom: 20px;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        .intro-section {
+            background: linear-gradient(135deg, #eff6ff 0%, #fef3c7 100%);
+            padding: 30px;
+            border-radius: 8px;
+            margin-bottom: 40px;
+            border-left: 5px solid var(--primary-color);
+        }
+
+        .checkmark-list {
+            list-style: none;
+            margin-left: 0;
+        }
+
+        .checkmark-list li:before {
+            content: "✅ ";
+            margin-right: 10px;
+        }
+
+        .problem-card {
+            background: white;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 25px;
+            margin-bottom: 30px;
+            transition: box-shadow 0.3s ease;
+        }
+
+        .problem-card:hover {
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.1);
+        }
+
+        .problem-number {
+            display: inline-block;
+            background: var(--primary-color);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+
+        pre {
+            background: var(--code-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            padding: 20px;
+            overflow-x: auto;
+            margin: 15px 0;
+            position: relative;
+        }
+
+        code {
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.95rem;
+            color: #c7254e;
+        }
+
+        pre code {
+            color: var(--text-color);
+        }
+
+        .interview-tip {
+            background: var(--tip-bg);
+            border-left: 4px solid var(--success-color);
+            padding: 15px 20px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+
+        .interview-tip strong {
+            color: var(--success-color);
+        }
+
+        .tip-icon:before {
+            content: "💡 ";
+        }
+
+        .section-icon {
+            font-size: 1.5rem;
+            margin-right: 10px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        th, td {
+            border: 1px solid var(--border-color);
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background: var(--primary-color);
+            color: white;
+            font-weight: 600;
+        }
+
+        tr:nth-child(even) {
+            background: var(--code-bg);
+        }
+
+        .highlight-box {
+            background: #fef3c7;
+            border-left: 5px solid var(--accent-color);
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .category-item {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            font-weight: 600;
+        }
+
+        .complexity-tag {
+            display: inline-block;
+            background: var(--accent-color);
+            color: white;
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-size: 0.85rem;
+            margin-left: 10px;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid var(--border-color);
+            margin: 30px 0;
+        }
+
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--primary-color);
+            color: white;
+            padding: 15px 20px;
+            border-radius: 50px;
+            text-decoration: none;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            transition: background 0.3s ease;
+            display: none;
+        }
+
+        .back-to-top:hover {
+            background: var(--secondary-color);
+        }
+
+        .back-to-top.visible {
+            display: block;
+        }
+
+        .keywords {
+            font-style: italic;
+            color: #6b7280;
+            font-size: 0.9rem;
+            text-align: center;
+            padding: 20px;
+            background: var(--code-bg);
+            border-radius: 8px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            h2 {
+                font-size: 1.5rem;
+            }
+
+            .category-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .toc {
+            background: var(--code-bg);
+            padding: 25px;
+            border-radius: 8px;
+            margin-bottom: 40px;
+        }
+
+        .toc h3 {
+            margin-top: 0;
+        }
+
+        .toc ul {
+            list-style: none;
+            margin-left: 0;
+        }
+
+        .toc li {
+            margin-bottom: 8px;
+        }
+
+        .toc a {
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .toc a:hover {
+            color: var(--secondary-color);
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>JavaScript Interview Problems Cheat Sheet: 60 Essential Coding Questions for 2025</h1>
+            <p class="subtitle">Master JavaScript interviews with this comprehensive collection of 60 hand-picked coding problems, complete with solutions, time complexity analysis, and expert interview tips.</p>
+        </header>
+
+        <div class="intro-section">
+            <h2 id="introduction"><span class="section-icon">📖</span>Introduction</h2>
+            
+            <p>Are you preparing for a <strong>JavaScript developer interview</strong> and feeling overwhelmed by the endless list of potential coding questions? You're not alone. Whether you're applying for a frontend developer, full-stack engineer, or Node.js position, mastering <strong>JavaScript interview questions</strong> is crucial for landing your dream job.</p>
+
+            <p>This ultimate <strong>JavaScript coding interview cheat sheet</strong> is designed for developers who want to:</p>
+
+            <ul class="checkmark-list">
+                <li><strong>Quickly review</strong> the most commonly asked JavaScript coding problems</li>
+                <li><strong>Understand time complexity</strong> and optimization techniques</li>
+                <li><strong>Learn what to say</strong> during technical interviews to impress interviewers</li>
+                <li><strong>Practice essential patterns</strong> in strings, arrays, algorithms, async/await, and more</li>
+            </ul>
+
+            <h4>Why This Guide?</h4>
+            <p>Unlike typical coding question lists, each problem in this guide includes:</p>
+            <ul>
+                <li><strong>Clean, production-ready code</strong> using modern ES6+ syntax</li>
+                <li><strong>Interview tips</strong> - exactly what to explain during your interview</li>
+                <li><strong>Time and space complexity</strong> analysis for every solution</li>
+                <li><strong>Real-world applications</strong> so you understand when to use each pattern</li>
+            </ul>
+
+            <h4>Who Is This For?</h4>
+            <ul>
+                <li><strong>Junior developers</strong> preparing for their first technical interview</li>
+                <li><strong>Mid-level engineers</strong> brushing up on fundamentals</li>
+                <li><strong>Career switchers</strong> transitioning into web development</li>
+                <li><strong>Self-taught programmers</strong> without a CS degree</li>
+            </ul>
+
+            <h4>What's Covered?</h4>
+            <p>This comprehensive guide covers <strong>60 JavaScript interview problems</strong> across 8 categories:</p>
+            <ul>
+                <li>🔤 <strong>String Manipulation</strong> - Reverse, palindrome, anagram detection</li>
+                <li>📊 <strong>Array Operations</strong> - Two sum, rotation, flattening, chunking</li>
+                <li>🧮 <strong>Number Algorithms</strong> - Fibonacci, prime numbers, factorials</li>
+                <li>🎯 <strong>Object Handling</strong> - Deep clone, merge, nested access</li>
+                <li>⚡ <strong>Async/Promises</strong> - Debounce, throttle, retry logic</li>
+                <li>🔍 <strong>Classic Algorithms</strong> - Binary search, sorting, valid parentheses</li>
+                <li>🎨 <strong>Practical Utilities</strong> - UUID generation, query parsers, formatters</li>
+                <li>🏆 <strong>Advanced Patterns</strong> - Memoization, one-liners, performance optimization</li>
+            </ul>
+
+            <p>Each solution is optimized for <strong>readability</strong> and <strong>interview performance</strong>. We prioritize code that's easy to explain under pressure while demonstrating your understanding of JavaScript fundamentals.</p>
+
+            <h4>How to Use This Guide</h4>
+            <ol>
+                <li><strong>Read through each category</strong> to familiarize yourself with common patterns</li>
+                <li><strong>Practice explaining</strong> the solutions out loud as if in an interview</li>
+                <li><strong>Focus on time complexity</strong> - interviewers love candidates who discuss Big O</li>
+                <li><strong>Memorize the "interview tips"</strong> - these are gold for technical discussions</li>
+                <li><strong>Try solving problems</strong> before looking at solutions to test your knowledge</li>
+            </ol>
+        </div>
+
+        <div class="toc">
+            <h3>📚 Table of Contents</h3>
+            <ul>
+                <li><a href="#string-problems">🔤 String Problems (1-8)</a></li>
+                <li><a href="#array-problems">📊 Array Problems (9-18)</a></li>
+                <li><a href="#number-problems">🧮 Number Problems (19-23)</a></li>
+                <li><a href="#object-problems">🎯 Object Problems (24-28)</a></li>
+                <li><a href="#async-problems">⚡ Async/Promise Problems (29-34)</a></li>
+                <li><a href="#algorithm-problems">🔍 Algorithm Problems (35-40)</a></li>
+                <li><a href="#practical-problems">🎨 Practical Problems (41-50)</a></li>
+                <li><a href="#bonus-problems">🏆 Bonus: Advanced One-Liners (51-60)</a></li>
+                <li><a href="#interview-strategy">💡 Interview Strategy Tips</a></li>
+                <li><a href="#quick-reference">🎯 Quick Reference Table</a></li>
+            </ul>
+        </div>
+
+        <h2 id="string-problems"><span class="section-icon">🔤</span>String Problems</h2>
+
+        <div class="problem-card">
+            <span class="problem-number">1️⃣</span>
+            <h3>Reverse a String</h3>
+            <pre><code>const reverseString = str => [...str].reverse().join('');
+console.log(reverseString("hello")); // "olleh"</code></pre>
+            <div class="interview-tip">
+                <strong>Interview tip:</strong> "Use spread/reverse/join for O(n) time complexity."
+            </div>
+        </div>
+
+        <div class="problem-card">
+            <span class="problem-number">2️⃣</span>
+            <h3>Check Palindrome</h3>
+            <pre><code>const isPalindrome = str => str === [...str].reverse().join('');
+console.log(isPalindrome("racecar")); // true
+console.log(isPalindrome("hello"));   // false</code></pre>
+            <div class="interview-tip">
+                <strong>Interview tip:</strong> "Check if string reads same forwards and backwards."
+            </div>
+        </div>
+
+        <div class="problem-card">
+            <span class="problem-number">3️⃣</span>
+            <h3>Count Vowels</h3>
+            <pre><code>const countVowels = str => (str.match(/[aeiou]/gi) || []).length;
+console.log(countVowels("hello world")); // 3</code></pre>
+            <div class="interview-tip">
+                <strong>Interview tip:</strong> "Use regex with match, handle null case with || []."
+            </div>
+        </div>
+
+        <div class="problem-card">
+            <span class="problem-number">4️⃣</span>
+            <h3>Capitalize First Letter</h3>
+            <pre><code>const capitalize = str => str.charAt(0).toUpperCase() + str.slice(1);
+console.log(capitalize("hello")); // "Hello"</code></pre>
+            <div class="interview-tip">
+                <strong>Interview tip:</strong> "Use charAt(0) and slice(1) for clean solution."
+            </div>
+        </div>
+
+        <div class="problem-card">
+            <span class="problem-number">5️⃣</span>
+            <h3>Title Case</h3>
+            <pre><code>const titleCase = str => str.split(' ').map(word => 
+  word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()
+).join(' ');
+console.log(titleCase("hello world")); // "Hello World"</code></pre>
+            <div class="interview-tip">
+                <strong>Interview tip:</strong> "Split, map each word, capitalize first letter, join back."
+            </div>
+        </div>
+
+        <div class="problem-card">
+            <span class="problem-number">6️⃣</span>
+            <h3>Remove Duplicates from String</h3>
+            <pre><code>const removeDuplicates = str => [...new Set(str)].join('');
+console.log(removeDuplicates("hello")); // "helo"</code></pre>
+            <div class="interview-tip">
+                <strong>Interview tip:</strong> "Use Set for O(n) deduplication, spread back to array."
+            </div>
+        </div>
+
+        <div class="problem-card">
+            <span class="problem-number">7️⃣</span>
+            <h3>Longest Word</h3>
+            <pre><code>const longestWord = str => str.split(' ').reduce((longest, word) => 
+  word.length > longest.length ? word : longest, ''
+);
+console.log(longestWord("The quick brown fox")); // "quick"</code></pre>
+            <div class="interview-tip">
+                <strong>Interview tip:</strong> "Split and reduce to find maximum length word."
+            </div>
+        </div>
+
+        <div class="problem-card">
+            <span class="problem-number">8️⃣</span>
+            <h3>Check Anagram</h3>
+            <pre><code>const isAnagram = (str1, str2) => {
+  const normalize = str => str.toLowerCase().split('').sort().join('');
+  return normalize(str1) === normalize(str2);
+};
+console.log(isAnagram("listen", "silent")); // true</code></pre>
+            <div class="interview-tip">
+                <strong>Interview tip:</strong> "Sort both strings and compare. O(n log n) time."
+            </div>
+        </div>
+
+        <h2 id="array-problems"><span class="section-icon">📊</span>Array Problems</h2>
+
+        <div class="problem-card">
+            <span class="problem-number">9️⃣</span>
+            <h3>Remove Duplicates from Array</h3>
+            <pre><code>const removeDuplicates = arr => [...new Set(arr)];
+console.log(removeDuplicates([1, 2, 2, 3, 4, 4])); // [1, 2, 3, 4]</code></pre>
+            <div class="interview-tip">
+                <strong>Interview tip:</strong> "Set automatically removes duplicates, O(n) time."
+            </div>
+        </div>
+
+        <div class="problem-card">
+            <span class="problem-number">🔟</span>
+            <h3>Find Maximum Number</h3>
+            <pre><code>const findMax = arr => Math.max(...arr);
+console.log(findMax([1, 5, 3, 9, 2])); // 9</code></pre>
+            <div class="interview-tip">
+                <strong>Interview tip:</strong> "Use Math.max with spread operator for simplicity."
+            </div>
+        </div>
+
+        <div class="problem-card">
+            <span class="problem-number">1️⃣1️⃣</span>
+            <h3>Sum of Array</h3>
+            <pre><code>const sum = arr => arr.reduce((acc, num) => acc + num, 0);
+console.log(sum([1, 2, 3, 4])); // 10</code></pre>
+            <div class="interview-tip">
+                <strong>Interview tip:</strong> "Reduce is perfect for accumulation, start with 0."
+            </div>
+        </div>
+
+        <div class="problem-card">
+            <span class="problem-number">1️⃣2️⃣</span>
+            <h3>Flatten Array</h3>
+            <pre><code>const flatten = arr => arr.flat(Infinity);
+console.log(flatten([1, [2, [3, [4]]]])); // [1, 2, 3, 4]
+
+// Recursive approach
+const flattenRecursive = arr => arr.reduce((acc, val) => 
+  Array.isArray(val) ? acc.concat(flattenRecursive(val)) : acc.concat(val), []
+);</code></pre>
+            <div class="interview-tip">
+                <strong>Interview tip:</strong> "Use flat(Infinity) or recursive reduce. Explain both."
+            </div>
+        </div>
+
+        <div class="problem-card">
+            <span class="problem-number">1️⃣3️⃣</span>
+            <h3>Chunk Array</h3>
+            <pre><code>const chunk = (arr, size) => {
+  const result = [];
+  for (let i = 0; i < arr.length; i += size) {
+    result.push(arr.slice(i, i + size));
+  }
+  return result;
+};
+console.log(chunk([1, 2, 3, 4, 5], 2)); // [[1, 2], [3, 4], [5]]</code></pre>
+            <div class="interview-tip">
+                <strong>Interview tip:</strong> "Slice array in chunks using loop. O(n) time."
+            </div>
+        </div>
+
+        <div class="problem-card">
+            <span class="problem-number">1️⃣4️⃣</span>
+            <h3>Find Missing Number</h3>
+            <pre><code>const findMissing = arr => {
+  const n = arr.length + 1;
+  const expectedSum = (n * (n + 1)) / 2;
+  const actualSum = arr.reduce((a, b) => a + b, 0);
+  return expectedSum - actualSum;
+};
+console.log(findMissing([1, 2, 4, 5])); // 3</code></pre>
+            <div class="interview-tip">
+                <strong>Interview tip:</strong> "Use sum formula n(n+1)/2, compare with actual sum."
+            </div>
+        </div>
+
+        <div class="problem-card">
+            <span class="problem-number">1️⃣5️⃣</span>
+            <h3>Rotate Array</h3>
+            <pre><code>const rotate = (arr, k) => {
+  k = k % arr.length;
+  return [...arr.slice(-k), ...arr.slice(0, -k)];
+};
+console.log(rotate([1, 2, 3, 4, 5], 2)); // [4, 5, 1, 2, 3]</code></pre>
+            <div class="interview-tip">
+                <strong>Interview tip:</strong> "Slice and concatenate. Handle k > length with modulo."
+            </div>
+        </div>
+
+        <div class="problem-card">
+            <span class="problem-number">1️⃣6️⃣</span>
+            <h3>Two Sum Problem</h3>
+            <pre><code>const twoSum = (arr, target) => {
+  const map = new Map();
+  for (let i = 0; i < arr.length; i++) {
+    const complement = target - arr[i];
+    if (map.has(complement)) return [map.get(complement), i];
+    map.set(arr[i], i);
+  }
+  return null;
+};
+console.log(twoSum([2, 7, 11, 15], 9)); // [0, 1]</code></pre>
+            <div class="interview-tip">
+                <strong>Interview tip:</strong> "Use Map for O(n) solution. Store complement lookup."
+            </div>
+        </div>
+
+        <div class="problem-card">
+            <span class="problem-number">1️⃣7️⃣</span>
+            <h3>Move Zeros to End</h3>
+            <pre><code>const moveZeros = arr => {
+  const nonZeros = arr.filter(x => x !== 0);
+  const zeros = arr.filter(x => x === 0);
+  return [...nonZeros, ...zeros];
+};
+console.log(moveZeros([0, 1, 0, 3, 12])); // [1, 3, 12, 0, 0]</code></pre>
+            <div class="interview-tip">
+                <strong>Interview tip:</strong> "Filter non-zeros, then zeros, concatenate."
+            </div>
+        </div>
+
+        <div class="problem-card">
+            <span class="problem-number">1️⃣8️⃣</span>
+            <h3>Find Intersection</h3>
+            <pre><code>const intersection = (arr1, arr2) => [...new Set(arr1)].filter(x => arr2.includes(x));
+console.log(intersection([1, 2, 3], [2, 3, 4])); // [2, 3]</code></pre>
+            <div class="interview-tip">
+                <strong>Interview tip:</strong> "Filter first array checking if item exists in second."
+            </div>
+        </div>
+
+        <h2 id="number-problems"><span class="section-icon">🧮</span>Number Problems</h2>
+
+        <div class="problem-card">
+            <span class="problem-number">1️⃣9️⃣</span>
+            <h3>Fibonacci Sequence</h3>
+            <pre><code>const fibonacci = n => {
+  if (n <= 1) return n;
+  let a = 0, b = 1;
+  for (let i = 2; i <= n; i++) {
+    [a, b] = [b, a + b];
+  }
+  return b;
+};
+console.log(fibonacci(7)); // 13</code></pre>
+            <div class="interview-tip">
+                <strong>Interview tip:</strong> "Iterative approach is O(n) time, O(1) space. Better than recursive."
+            </div>
+        </div>
+
+        <div class="problem-card">
+            <span class="problem-number">2️⃣0️⃣</span>
+            <h3>Check Prime Number</h3>
+            <pre><code>const isPrime = num => {
+  if (num <= 1) return false;
+  for (let i = 2; i <= Math.sqrt(num); i++) {
+    if (num % i === 0) return false;
+  }
+  return true;
+};
+console.log(isPrime(17)); // true</code></pre>
+            <div class="interview-tip">
+                <strong>Interview tip:</strong> "Check divisibility up to sqrt(n) for O(√n) time."
+            </div>
+        </div>
+
+        <div class="problem-card">
+            <span class="problem-number">2️⃣1️⃣</span>
+            <h3>Factorial</h3>
+            <pre><code>const factorial = n => n <= 1 ? 1 : n * factorial(n - 1);
+console.log(factorial(5)); // 120
+
+// Iterative
+const factorialIterative = n => {
+  let result = 1;
+  for (let i = 2; i <= n; i++) result *= i;
+  return result;
+};</code></pre>
+            <div class="interview-tip">
+                <strong>Interview tip:</strong> "Know both recursive and iterative. Mention tail recursion optimization."
+            </div>
+        </div>
+
+        <div class="problem-card">
+            <span class="problem-number">2️⃣2️⃣</span>
+            <h3>Reverse Number</h3>
+            <pre><code>const reverseNumber = num => parseInt([...String(Math.abs(num))].reverse().join('')) * Math.sign(num);
+console.log(reverseNumber(12345)); // 54321
+console.log(reverseNumber(-123));  // -321</code></pre>
+            <div class="interview-tip">
+                <strong>Interview tip:</strong> "Convert to string, reverse, handle negative with Math.sign."
+            </div>
+        </div>
+
+        <div class="problem-card">
+            <span class="problem-number">2️⃣3️⃣</span>
+            <h3>Count Digits</h3>
+            <pre><code>const countDigits = num => String(Math.abs(num)).length;
+console.log(countDigits(12345)); // 5</code></pre>
+            <div class="interview-tip">
+                <strong>Interview tip:</strong> "Convert to string and get length. Handle negatives."
+            </div>
+        </div>
+
+        <h2 id="object-problems"><span class="section-icon">🎯</span>Object Problems</h2>
+
+        <div class="problem-card">
+            <span class="problem-number">2️⃣4️⃣</span>
+            <h3>Deep Clone Object</h3>
+            <pre><code>const deepClone = obj => JSON.parse(JSON.stringify(obj));
+console.log(deepClone({a: 1, b: {c: 2}})); // {a: 1, b: {c: 2}}
+
+// Better with structuredClone
+const deepClone2 = obj => structuredClone(obj);</code></pre>
+            <div class="interview-tip">
+                <strong>Interview tip:</strong> "JSON method works but loses functions. structuredClone is modern."
+            </div>
+        </div>
+
+        <div class="problem-card">
+            <span class="problem-number">2️⃣5️⃣</span>
+            <h3>Merge Objects</h3>
+            <pre><code>const merge = (obj1, obj2) => ({...obj1, ...obj2});
+console.log(merge({a: 1}, {b: 2})); // {a: 1, b: 2}
+
+// Deep merge
+const deepMerge = (obj1, obj2) => {
+  const result = {...obj1};
+  for (let key in obj2) {
+    if (typeof obj2[key] === 'object' && !Array.isArray(obj2[key])) {
+      result[key] = deepMerge(result[key] || {}, obj2[key]);
+    } else {
+      result[key] = obj2[key];
+    }
+  }
+  return result;
+};</code></pre>
+            <div class="interview-tip">
+                <strong>Interview tip:</strong> "Spread for shallow, recursive for deep merge."
+            </div>
+        </div>
+
+        <div class="problem-card">
+            <span class="problem-number">2️⃣6️⃣</span>
+            <h3>Group By Property</h3>
+            <pre><code>const groupBy = (arr, key) => arr.reduce((acc, obj) => {
+  const group = obj[key];
+  acc[group] = acc[group] || [];
+  acc[group].push(obj);
+  return acc;
+}, {});
+
+const data = [{type: 'fruit', name: 'apple'}, {type: 'fruit', name: 'banana'}];
+console.log(groupBy(data, 'type')); // {fruit: [{...}, {...}]}</code></pre>
+            <div class="interview-tip">
+                <strong>Interview tip:</strong> "Reduce with object accumulator. Create arrays on first encounter."
+            </div>
+        </div>
+
+        <div class="problem-card">
+            <span class="problem-number">2️⃣7️⃣</span>
+            <h3>Get Nested Property</h3>
+            <pre><code>const getNestedProperty = (obj, path) => path.split('.').reduce((acc, key) => acc?.[key], obj);
+console.log(getNestedProperty({a: {b: {c: 42}}}, 'a.b.c')); // 42</code></pre>
+            <div class="interview-tip">
+                <strong>Interview tip:</strong> "Split path, reduce with optional chaining for safety."
+            </div>
+        </div>
+
+        <div class="problem-card">
+            <span class="problem-number">2️⃣8️⃣</span>
+            <h3>Compare Objects</h3>
+            <pre><code>const isEqual = (obj1, obj2) => JSON.stringify(obj1) === JSON.stringify(obj2);
+console.log(isEqual({a: 1}, {a: 1})); // true</code></pre>
+            <div class="interview-tip">
+                <strong>Interview tip:</strong> "JSON stringify works for simple cases. Discuss deep comparison."
+            </div>
+        </div>
+
+        <h2 id="async-problems"><span class="section-icon">⚡</span>Async/Promise Problems</h2>
+
+        <div class="problem-card">
+            <span class="problem-number">2️⃣9️⃣</span>
+            <h3>Delay Function</h3>
+            <pre><code>const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
+
+// Usage
+await delay(1000);
+console.log('After 1 second');</code></pre>
+            <div class="interview-tip">
+                <strong>Interview tip:</strong> "Promise wrapper around setTimeout. Useful for async/await."
+            </div>
+        </div>
+
+        <div class="problem-card">
+            <span class="problem-number">3️⃣0️⃣</span>
+            <h3>Retry Function</h3>
+            <pre><code>const retry = async (fn, retries = 3) => {
+  for (let i = 0; i < retries; i++) {
+    try {
+      return await fn();
+    } catch (err) {
+      if (i === retries - 1) throw err;
+    }
+  }
+};</code></pre>
+            <div class="interview-tip">
+                <strong>Interview tip:</strong> "Loop with try-catch, throw on final retry."
+            </div>
+        </div>
+
+        <div class="problem-card">
+            <span class="problem-number">3️⃣1️⃣</span>
+            <h3>Promise.all Implementation</h3>
+            <pre><code>const promiseAll = promises => {
+  return new Promise((resolve, reject) => {
+    const results = [];
+    let completed = 0;
+    
+    promises.forEach((promise, index) => {
+      Promise.resolve(promise).then(value => {
+        results[index] = value;
+        completed++;
+        if (completed === promises.length) resolve(results);
+      }).catch(reject);
+    });
+  });
+};</code></pre>
+            <div class="interview-tip">
+                <strong>Interview tip:</strong> "Track completion count, maintain order, reject on first error."
+            </div>
+        </div>
+
+        <div class="problem-card">
+            <span class="problem-number">3️⃣2️⃣</span>
+            <h3>Debounce</h3>
+            <pre><code>const debounce = (fn, delay) => {
+  let timeoutId;
+  return function(...args) {
+    clearTimeout(timeoutId);
+    timeoutId = setTimeout(() => fn.apply(this, args), delay);
+  };
+};
+
+// Usage
+const debouncedSearch = debounce(() => console.log('Searching...'), 300);</code></pre>
+            <div class="interview-tip">
+                <strong>Interview tip:</strong> "Clear previous timeout, set new one. Good for search inputs."
+            </div>
+        </div>
+
+        <div class="problem-card">
+            <span class="problem-number">3️⃣3️⃣</span>
+            <h3>Throttle</h3>
+            <pre><code>const throttle = (fn, delay) => {
+  let lastCall = 0;
+  return function(...args) {
+    const now = Date.now();
+    if (now - lastCall >= delay) {
+      lastCall = now;
+      fn.apply(this, args);
+    }
+  };
+};
+
+// Usage
+const throttledScroll = throttle(() => console.log('Scrolling...'), 200);</code></pre>
+            <div class="interview-tip">
+                <strong>Interview tip:</strong> "Track last call time, execute if delay passed. Good for scroll/resize."
+            </div>
+        </div>
+
+        <div class="problem-card">
+            <span class="problem-number">3️⃣4️⃣</span>
+            <h3>Async Parallel vs Sequential</h3>
+            <pre><code>// Parallel - faster
+const parallel = async () => {
+  const [result1, result2] = await Promise.all([
+    fetch('/api/1'),
+    fetch('/api/2')
+  ]);
+};
+
+// Sequential - slower but dependent
+const sequential = async () => {
+  const result1 = await fetch('/api/1');
+  const result2 = await fetch('/api/2');
+};</code></pre>
+            <div class="interview-tip">
+                <strong>Interview tip:</strong> "Use Promise.all for parallel, separate awaits for sequential."
+            </div>
+        </div>
+
+        <h2 id="algorithm-problems"><span class="section-icon">🔍</span>Algorithm Problems</h2>
+
+        <div class="problem-card">
+            <span class="problem-number">3️⃣5️⃣</span>
+            <h3>Binary Search</h3>
+            <pre><code>const binarySearch = (arr, target) => {
+  let left = 0, right = arr.length - 1;
+  
+  while (left <= right) {
+    const mid = Math.floor((left + right) / 2);
+    if (arr[mid] === target) return mid;
+    if (arr[mid] < target) left = mid + 1;
+    else right = mid - 1;
+  }
+  return -1;
+};
+console.log(binarySearch([1, 2, 3, 4, 5], 3)); // 2</code></pre>
+            <div class="interview-tip">
+                <strong>Interview tip:</strong> "O(log n) search on sorted array. Update left/right pointers."
+            </div>
+        </div>
+
+        <div class="problem-card">
+            <span class="problem-number">3️⃣6️⃣</span>
+            <h3>Bubble Sort</h3>
+            <pre><code>const bubbleSort = arr => {
+  const n = arr.length;
+  for (let i = 0; i < n; i++) {
+    for (let j = 0; j < n - i - 1; j++) {
+      if (arr[j] > arr[j + 1]) {
+        [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]];
+      }
+    }
+  }
+  return arr;
+};
+console.log(bubbleSort([5, 3, 8, 4, 2])); // [2, 3, 4, 5, 8]</code></pre>
+            <div class="interview-tip">
+                <strong>Interview tip:</strong> "O(n²) time. Swap adjacent if out of order. Not efficient."
+            </div>
+        </div>
+
+        <div class="problem-card">
+            <span class="problem-number">3️⃣7️⃣</span>
+            <h3>Quick Sort</h3>
+            <pre><code>const quickSort = arr => {
+  if (arr.length <= 1) return arr;
+  const pivot = arr[arr.length - 1];
+  const left = arr.filter((x, i) => x <= pivot && i < arr.length - 1);
+  const right = arr.filter(x => x > pivot);
+  return [...quickSort(left), pivot, ...quickSort(right)];
+};
+console.log(quickSort([5, 3, 8, 4, 2])); // [2, 3, 4, 5, 8]</code></pre>
+            <div class="interview-tip">
+                <strong>Interview tip:</strong> "O(n log n) average. Pick pivot, partition, recurse."
+            </div>
+        </div>
+
+        <div class="problem-card">
+            <span class="problem-number">3️⃣8️⃣</span>
+            <h3>Find Unique Values</h3>
+            <pre><code>const findUnique = arr => arr.filter((val, idx) => arr.indexOf(val) === idx);
+console.log(findUnique([1, 2, 2, 3, 4, 4])); // [1, 2, 3, 4]</code></pre>
+            <div class="interview-tip">
+                <strong>Interview tip:</strong> "Filter where first index equals current index."
+            </div>
+        </div>
+
+        <div class="problem-card">
+            <span class="problem-number">3️⃣9️⃣</span>
+            <h3>Most Frequent Element</h3>
+            <pre><code>const mostFrequent = arr => {
+  const freq = {};
+  let maxCount = 0, result = null;
+  
+  arr.forEach(val => {
+    freq[val] = (freq[val] || 0) + 1;
+    if (freq[val] > maxCount) {
+      maxCount = freq[val];
+      result = val;
+    }
+  });
+  return result;
+};
+console.log(mostFrequent([1, 3, 2, 3, 3, 1])); // 3</code></pre>
+            <div class="interview-tip">
+                <strong>Interview tip:</strong> "Count frequencies with object, track maximum."
+            </div>
+        </div>
+
+        <div class="problem-card">
+            <span class="problem-number">4️⃣0️⃣</span>
+            <h3>Valid Parentheses</h3>
+            <pre><code>const isValidParentheses = str => {
+  const stack = [];
+  const pairs = {'(': ')', '[': ']', '{': '}'};
+  
+  for (let char of str) {
+    if (pairs[char]) {
+      stack.push(char);
+    } else {
+      const last = stack.pop();
+      if (pairs[last] !== char) return false;
+    }
+  }
+  return stack.length === 0;
+};
+console.log(isValidParentheses("({[]})")); // true</code></pre>
+            <div class="interview-tip">
+                <strong>Interview tip:</strong> "Use stack. Push opening, pop and match closing."
+            </div>
+        </div>
+
+        <h2 id="practical-problems"><span class="section-icon">🎨</span>Practical Problems</h2>
+
+        <div class="problem-card">
+            <span class="problem-number">4️⃣1️⃣</span>
+            <h3>UUID Generator</h3>
+            <pre><code>const generateUUID = () => {
+  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, c => {
+    const r = Math.random() * 16 | 0;
+    const v = c === 'x' ? r : (r & 0x3 | 0x8);
+    return v.toString(16);
+  });
+};
+console.log(generateUUID()); // "a3f2b4c5-..."</code></pre>
+            <div class="interview-tip">
+                <strong>Interview tip:</strong> "Replace template with random hex values. Version 4 UUID."
+            </div>
+        </div>
+
+        <div class="problem-card">
+            <span class="problem-number">4️⃣2️⃣</span>
+            <h3>Query String to Object</h3>
+            <pre><code>const parseQueryString = url => {
+  const params = new URLSearchParams(url.split('?')[1]);
+  return Object.fromEntries(params);
+};
+console.log(parseQueryString('https://site.com?name=john&age=30')); 
+// {name: 'john', age: '30'}</code></pre>
+            <div class="interview-tip">
+                <strong>Interview tip:</strong> "Use URLSearchParams and Object.fromEntries for clean solution."
+            </div>
+        </div>
+
+        <div class="problem-card">
+            <span class="problem-number">4️⃣3️⃣</span>
+            <h3>Cookie Parser</h3>
+            <pre><code>const parseCookies = () => {
+  return document.cookie.split(';').reduce((acc, cookie) => {
+    const [key, value] = cookie.trim().split('=');
+    acc[key] = decodeURIComponent(value);
+    return acc;
+  }, {});
+};</code></pre>
+            <div class="interview-tip">
+                <strong>Interview tip:</strong> "Split by semicolon, parse key-value pairs, decode URI."
+            </div>
+        </div>
+
+        <div class="problem-card">
+            <span class="problem-number">4️⃣4️⃣</span>
+            <h3>Local Storage Helper</h3>
+            <pre><code>const storage = {
+  set: (key, value) => localStorage.setItem(key, JSON.stringify(value)),
+  get: key => JSON.parse(localStorage.getItem(key)),
+  remove: key => localStorage.removeItem(key),
+  clear: () => localStorage.clear()
+};</code></pre>
+            <div class="interview-tip">
+                <strong>Interview tip:</strong> "Wrap localStorage with JSON parsing for objects."
+            </div>
+        </div>
+
+        <div class="problem-card">
+            <span class="problem-number">4️⃣5️⃣</span>
+            <h3>Format Number with Commas</h3>
+            <pre><code>const formatNumber = num => num.toLocaleString('en-US');
+console.log(formatNumber(1234567)); // "1,234,567"
+
+// Manual
+const formatManual = num => num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');</code></pre>
+            <div class="interview-tip">
+                <strong>Interview tip:</strong> "Use toLocaleString for internationalization. Regex for custom."
+            </div>
+        </div>
+
+        <div class="problem-card">
+            <span class="problem-number">4️⃣6️⃣</span>
+            <h3>Truncate String</h3>
+            <pre><code>const truncate = (str, length) => str.length > length ? str.slice(0, length) + '...' : str;
+console.log(truncate("Hello World", 8)); // "Hello Wo..."</code></pre>
+            <div class="interview-tip">
+                <strong>Interview tip:</strong> "Check length, slice and add ellipsis if needed."
+            </div>
+        </div>
+
+        <div class="problem-card">
+            <span class="problem-number">4️⃣7️⃣</span>
+            <h3>Random Color Generator</h3>
+            <pre><code>const randomColor = () => '#' + Math.floor(Math.random() * 16777215).toString(16).padStart(6, '0');
+console.log(randomColor()); // "#a3f2b4"</code></pre>
+            <div class="interview-tip">
+                <strong>Interview tip:</strong> "Random number 0-16777215 to hex, pad to 6 digits."
+            </div>
+        </div>
+
+        <div class="problem-card">
+            <span class="problem-number">4️⃣8️⃣</span>
+            <h3>Get Age from Birthday</h3>
+            <pre><code>const getAge = birthday => {
+  const today = new Date();
+  const birth = new Date(birthday);
+  let age = today.getFullYear() - birth.getFullYear();
+  const monthDiff = today.getMonth() - birth.getMonth();
+  if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birth.getDate())) age--;
+  return age;
+};
+console.log(getAge('1990-05-15')); // 35 (as of 2025)</code></pre>
+            <div class="interview-tip">
+                <strong>Interview tip:</strong> "Calculate year difference, adjust for month/day not reached."
+            </div>
+        </div>
+
+        <div class="problem-card">
+            <span class="problem-number">4️⃣9️⃣</span>
+            <h3>Shuffle Array</h3>
+            <pre><code>const shuffle = arr => {
+  const result = [...arr];
+  for (let i = result.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [result[i], result[j]] = [result[j], result[i]];
+  }
+  return result;
+};
+console.log(shuffle([1, 2, 3, 4, 5]));</code></pre>
+            <div class="interview-tip">
+                <strong>Interview tip:</strong> "Fisher-Yates algorithm. Swap random elements backward."
+            </div>
+        </div>
+
+        <div class="problem-card">
+            <span class="problem-number">5️⃣0️⃣</span>
+            <h3>Memoization</h3>
+            <pre><code>const memoize = fn => {
+  const cache = {};
+  return (...args) => {
+    const key = JSON.stringify(args);
+    if (key in cache) return cache[key];
+    cache[key] = fn(...args);
+    return cache[key];
+  };
+};
+
+const slowFib = n => n <= 1 ? n : slowFib(n - 1) + slowFib(n - 2);
+const fastFib = memoize(slowFib);
+console.log(fastFib(40)); // Much faster!</code></pre>
+            <div class="interview-tip">
+                <strong>Interview tip:</strong> "Cache results by stringified arguments. Huge performance boost."
+            </div>
+        </div>
+
+        <h2 id="bonus-problems"><span class="section-icon">🏆</span>Bonus: Advanced One-Liners</h2>
+
+        <div class="problem-card">
+            <h3>10 Essential JavaScript One-Liners</h3>
+            <pre><code>// 51. Remove falsy values
+const compact = arr => arr.filter(Boolean);
+
+// 52. Get unique by property
+const uniqueBy = (arr, key) => [...new Map(arr.map(x => [x[key], x])).values()];
+
+// 53. Pick object properties
+const pick = (obj, keys) => Object.fromEntries(keys.map(k => [k, obj[k]]));
+
+// 54. Omit object properties
+const omit = (obj, keys) => Object.fromEntries(Object.entries(obj).filter(([k]) => !keys.includes(k)));
+
+// 55. Sleep function
+const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
+
+// 56. Random integer in range
+const randomInt = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
+
+// 57. Check if empty object
+const isEmpty = obj => Object.keys(obj).length === 0;
+
+// 58. Clamp number
+const clamp = (num, min, max) => Math.min(Math.max(num, min), max);
+
+// 59. Average of array
+const average = arr => arr.reduce((a, b) => a + b, 0) / arr.length;
+
+// 60. Range array
+const range = (start, end) => Array.from({length: end - start + 1}, (_, i) => start + i);</code></pre>
+            <div class="interview-tip">
+                <strong>Interview tip:</strong> "These one-liners showcase functional programming and ES6 mastery."
+            </div>
+        </div>
+
+        <h2 id="interview-strategy"><span class="section-icon">💡</span>Interview Strategy Tips</h2>
+
+        <div class="highlight-box">
+            <h3>Time Complexity Quick Reference:</h3>
+            <ul>
+                <li><strong>O(1)</strong> - Constant: Direct access, hash lookup</li>
+                <li><strong>O(log n)</strong> - Logarithmic: Binary search, balanced trees</li>
+                <li><strong>O(n)</strong> - Linear: Single loop, filter, map</li>
+                <li><strong>O(n log n)</strong> - Linearithmic: Efficient sorting (merge/quick)</li>
+                <li><strong>O(n²)</strong> - Quadratic: Nested loops, bubble sort</li>
+                <li><strong>O(2ⁿ)</strong> - Exponential: Fibonacci recursive</li>
+            </ul>
+        </div>
+
+        <h3>When Asked About a Problem:</h3>
+        <ol>
+            <li><strong>Clarify</strong> - Ask about edge cases, input size, constraints</li>
+            <li><strong>Example</strong> - Walk through a simple example</li>
+            <li><strong>Approach</strong> - Explain your strategy before coding</li>
+            <li><strong>Code</strong> - Write clean, readable code</li>
+            <li><strong>Test</strong> - Mention edge cases you'd test</li>
+            <li><strong>Optimize</strong> - Discuss time/space complexity improvements</li>
+        </ol>
+
+        <h3>Common Follow-ups:</h3>
+        <ul>
+            <li>"What's the time complexity?" → Always be ready to answer</li>
+            <li>"How would you optimize this?" → Discuss trade-offs</li>
+            <li>"What if input is very large?" → Talk about performance</li>
+            <li>"What edge cases exist?" → null, empty, negative, duplicates</li>
+        </ul>
+
+        <h3>Good Practices to Mention:</h3>
+        <ul>
+            <li>"I'd add input validation"</li>
+            <li>"I'd handle null/undefined cases"</li>
+            <li>"I'd write unit tests for this"</li>
+            <li>"I could optimize with memoization/caching"</li>
+            <li>"I'd use TypeScript for better type safety"</li>
+        </ul>
+
+        <h2 id="quick-reference"><span class="section-icon">🎯</span>Quick Reference Table</h2>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Problem Type</th>
+                    <th>Best Approach</th>
+                    <th>Time Complexity</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Search sorted</td>
+                    <td>Binary search</td>
+                    <td>O(log n)</td>
+                </tr>
+                <tr>
+                    <td>Search unsorted</td>
+                    <td>Linear/Hash</td>
+                    <td>O(n) or O(1)</td>
+                </tr>
+                <tr>
+                    <td>Sort</td>
+                    <td>Quick/Merge sort</td>
+                    <td>O(n log n)</td>
+                </tr>
+                <tr>
+                    <td>Duplicates</td>
+                    <td>Set/Hash map</td>
+                    <td>O(n)</td>
+                </tr>
+                <tr>
+                    <td>Two pointer</td>
+                    <td>Array problems</td>
+                    <td>O(n)</td>
+                </tr>
+                <tr>
+                    <td>Stack</td>
+                    <td>Parentheses/undo</td>
+                    <td>O(n)</td>
+                </tr>
+                <tr>
+                    <td>Recursion</td>
+                    <td>Tree/divide-conquer</td>
+                    <td>Varies</td>
+                </tr>
+                <tr>
+                    <td>DP/Memo</td>
+                    <td>Optimization</td>
+                    <td>O(n) space</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="highlight-box" style="text-align: center; margin-top: 50px;">
+            <h2>Good luck with your interviews! 🚀</h2>
+            <p>Practice these problems, understand the patterns, and you'll be ready to ace any JavaScript coding interview.</p>
+        </div>
+
+        <hr>
+
+        <div class="keywords">
+            <p><strong>Related Keywords:</strong> JavaScript interview questions, coding interview preparation, frontend developer interview, JavaScript algorithms, web developer coding test, technical interview questions, JavaScript programming challenges, ES6 interview questions, coding patterns JavaScript, algorithm interview prep, JavaScript developer jobs 2025</p>
+        </div>
+    </div>
+
+    <a href="#" class="back-to-top" id="backToTop">↑ Top</a>
+
+    <script>
+        // Back to top button functionality
+        window.addEventListener('scroll', function() {
+            const backToTop = document.getElementById('backToTop');
+            if (window.pageYOffset > 300) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+        });
+
+        document.getElementById('backToTop').addEventListener('click', function(e) {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
